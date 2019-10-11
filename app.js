@@ -45,12 +45,7 @@ const data = [
 ]
 
 
-// Instructions
-// Take the data above and display it as tiles on the page
-
-
-
-
+// Tile create
 function makeTile(){
     const cardRow = document.querySelector(".card-row");
     const cardDiv = document.createElement("div");
@@ -59,7 +54,7 @@ function makeTile(){
     return cardDiv;
 }
 
-
+// Topic create
 function makeTopic(topicV){
     const cardWrap = document.querySelector(".card");
     const topicDiv = document.createElement("div");
@@ -69,7 +64,7 @@ function makeTopic(topicV){
     return topicDiv
 }
 
-
+// Title create
 function makeTitle(titleV){
     const cardWrap = document.querySelector(".card");
     const titleDiv = document.createElement("div");
@@ -79,7 +74,7 @@ function makeTitle(titleV){
     return titleDiv
 }
 
-
+// Button create
 function makeButton(buttonV){
     const cardWrap = document.querySelector(".card");
     const buttonDiv = document.createElement("div");
@@ -89,32 +84,33 @@ function makeButton(buttonV){
     return buttonDiv;
 }
 
+// Repeat tile & Data insert to each function
 
 for(let i=0; i < data.length ; i++) {
     function createCard(){
+        // Bacgroundcolor
         const colorV = data[i].color;
         const cardDiv = makeTile(colorV);
         cardDiv.style = "background-color:" + colorV;
-        
+        // Topic
         const topicV = data[i].topic;
         const topic = makeTopic(topicV);
-
+        // Title
         const titleV = data[i].title;
         const title = makeTitle(titleV);
-
-        const buttonV = "Read for "+data[i].price;
+        // Button
+        const buttonV = "Read for "+ data[i].price;
         const button = makeButton(buttonV)
-
-
+        // Define location
         cardDiv.appendChild(topic);
         cardDiv.appendChild(title);
         cardDiv.appendChild(button);
         return cardDiv;
     }
 
-console.log(createCard(data));
+    const cardRow = document.querySelector(".card-row");
+    cardRow.appendChild(createCard());
 }
-
 
 
 
